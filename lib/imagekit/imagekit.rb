@@ -28,7 +28,7 @@ class ImageKit
   end
 
   def hash
-    Digest::MD5.hexdigest params_without_hash.to_json + (ImageKit.api_key || api_key)
+    Digest::MD5.hexdigest params_without_hash.to_json + (ImageKit.api_key || @api_key)
   end
 
   def params_without_hash
