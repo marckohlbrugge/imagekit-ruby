@@ -32,10 +32,10 @@ class ImageKit
   end
 
   def params_without_hash
-    {
-      url: @url,
-      width: @options[:width].to_s,
-      height: @options[:height].to_s
-    }.reject { |_k, v| v.strip == "" }
+    params = @options
+    params = params.each { |k, v| params[k] = v.to_s }
+    params.reject! { |_k, v| v.strip == "" }
+    params[:url] = @url
+    params
   end
 end
